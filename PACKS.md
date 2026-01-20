@@ -26,3 +26,22 @@ Template:
 
 vireon-proofpacks verify results/CERTPPO_CARTPOLE_RUN_*
 
+Verification checks chain integrity, hashes, derivation recomputation, and acceptance semantics.
+
+⸻
+
+Packs
+
+(Add entries here as you publish them)
+
+Template:
+	•	Pack name: CERTPPO_CARTPOLE_RUN_YYYYMMDDTHHMMSSZ
+	•	Run ID: ...
+	•	Env: CartPole-v1
+	•	Algo: PPO_demo_certified
+	•	Commit: <git sha>
+	•	Pack sha256 (zip): <sha256>
+	•	Verify command:
+
+vireon-proofpacks verify results/CERTPPO_CARTPOLE_RUN_*
+
