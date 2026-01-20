@@ -1,4 +1,16 @@
-:::writing{id=“60483” variant=“standard”}
+writing{id=“71826” variant=“standard”}
+Verify the released ProofPack
+	1.	Download from Releases:
+
+	•	proofpack.zip
+	•	proofpack.zip.sha256.txt
+
+	2.	Unzip proofpack.zip
+	3.	Run:
+	pip install -e ".[demo]"
+vireon-proofpacks verify results/CERTPPO_CARTPOLE_RUN_*
+
+	
 
 # Vireon ProofPacks
 
