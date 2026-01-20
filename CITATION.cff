@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it."
+title: "Vireon ProofPacks"
+version: 0.1.0
+date-released: 2026-01-20
+license: MIT
+authors:
+  - name: "The Architects"
+repository-code: "https://github.com/<YOUR_GITHUB_USERNAME>/vireon-proofpacks"
+abstract: >
+  Proof-carrying RL training artifacts: chained append-only update ledgers, hashed checkpoints and raw rollouts,
+  replayable PAC certificates (anytime-valid), and optional Ed25519 signing, with a CartPole PPO demo and verifier.
+keywords:
+  - reinforcement-learning
+  - ppo
+  - certification
+  - reproducibility
+  - cryptographic-integrity
