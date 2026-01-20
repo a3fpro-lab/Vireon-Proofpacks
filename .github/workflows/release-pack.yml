@@ -1,0 +1,57 @@
+name: release-pack
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag to attach the proofpack to (e.g., v0.1.0)"
+        required: true
+        default: "v0.1.0"
+      steps:
+        description: "Training steps"
+        required: true
+        default: "500"
+      seed:
+        description: "Seed"
+        required: true
+        default: "1"
+
+jobs:
+  build-pack:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: python -m pip install -U pip
+      - run: pip install -e ".[demo]"
+
+      - name: Train proofpack
+        run: |
+          vireon-proofpacks train --steps ${{ inputs.steps }} --seed ${{ inputs.seed }}
+
+      - name: Verify proofpack
+        run: |
+          ls -la results
+          PACK_DIR=$(ls -d results/CERTPPO_CARTPOLE_RUN_* | tail -n 1)
+          echo "PACK_DIR=$PACK_DIR" >> $GITHUB_ENV
+          vireon-proofpacks verify "$PACK_DIR"
+
+      - name: Zip proofpack
+        run: |
+          zip -r proofpack.zip "$PACK_DIR"
+          sha256sum proofpack.zip | tee proofpack.zip.sha256.txt
+
+      - name: Upload to release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ inputs.tag }}
+          files: |
+            proofpack.zip
+            proofpack.zip.sha256.txt
