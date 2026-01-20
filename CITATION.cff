@@ -5,7 +5,7 @@ version: 0.1.0
 date-released: 2026-01-20
 license: MIT
 authors:
-  - name: "The Architects"
+  - name: "Inkwon Song Jr. "
 repository-code: "https://github.com/<YOUR_GITHUB_USERNAME>/vireon-proofpacks"
 abstract: >
   Proof-carrying RL training artifacts: chained append-only update ledgers, hashed checkpoints and raw rollouts,
