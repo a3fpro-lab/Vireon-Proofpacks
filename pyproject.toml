@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vireon-proofpacks"
+version = "0.1.0"
+description = "Proof-carrying training artifacts: chained ledger, hashed artifacts, replayable certificates."
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [{name = "The Architects"}]
+dependencies = []
+
+[project.optional-dependencies]
+demo = ["numpy>=1.23", "torch", "gymnasium"]
+sign = ["pynacl"]
+
+[project.scripts]
+vireon-proofpacks = "vireon_proofpacks_all_in_one:main"
